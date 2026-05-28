@@ -291,8 +291,9 @@
                 return;
             }
 
-            socket =
-                new WebSocket("ws://localhost:3000/ws");
+            socket = new WebSocket(
+                `${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/ws`
+            );
 
             socket.onopen = function(){
 
