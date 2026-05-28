@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 	"time"
-
+	"os"
 	"github.com/gorilla/websocket"
 )
 
@@ -139,5 +139,11 @@ func main() {
 
 	log.Println("Server running on :3000")
 
-	log.Fatal(http.ListenAndServe(":3000", nil))
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		port = "3000"
+	}
+	
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
