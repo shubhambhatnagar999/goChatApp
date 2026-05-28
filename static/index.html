@@ -12,220 +12,226 @@
 
     <title>Go Real-Time Chat</title>
 
-    <style>
+   ```html
+<style>
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, sans-serif;
-        }
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial, sans-serif;
+    }
+
+    body{
+
+        min-height:100vh;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        background: linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2,
+            #6B73FF
+        );
+
+        padding:15px;
+    }
+
+    .container{
+
+        width:100%;
+
+        max-width:750px;
+
+        background: rgba(255,255,255,0.12);
+
+        backdrop-filter: blur(15px);
+
+        border:1px solid rgba(255,255,255,0.2);
+
+        border-radius:24px;
+
+        padding:20px;
+
+        box-shadow:
+            0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    h1{
+
+        text-align:center;
+
+        color:white;
+
+        margin-bottom:20px;
+
+        font-size:28px;
+    }
+
+    #online{
+
+        color:#d1ffd6;
+
+        text-align:center;
+
+        margin-bottom:20px;
+
+        font-size:14px;
+    }
+
+    .top,
+    .bottom{
+
+        display:flex;
+
+        gap:10px;
+
+        margin-bottom:15px;
+    }
+
+    .top input,
+    .bottom input{
+
+        flex:1;
+    }
+
+    input{
+
+        width:100%;
+
+        padding:14px;
+
+        border:none;
+
+        outline:none;
+
+        border-radius:14px;
+
+        background: rgba(255,255,255,0.18);
+
+        color:white;
+
+        font-size:16px;
+    }
+
+    input::placeholder{
+        color:#eee;
+    }
+
+    button{
+
+        border:none;
+
+        padding:14px 20px;
+
+        border-radius:14px;
+
+        background:white;
+
+        color:#6B73FF;
+
+        font-weight:bold;
+
+        cursor:pointer;
+
+        transition:0.3s;
+
+        font-size:15px;
+
+        min-width:90px;
+    }
+
+    button:hover{
+
+        transform:translateY(-2px);
+
+        opacity:0.92;
+    }
+
+    #chat{
+
+        height:400px;
+
+        overflow-y:auto;
+
+        padding:15px;
+
+        border-radius:18px;
+
+        background: rgba(255,255,255,0.08);
+
+        margin-bottom:15px;
+    }
+
+    .message{
+
+        padding:14px;
+
+        margin-bottom:14px;
+
+        border-radius:16px;
+
+        background: rgba(255,255,255,0.16);
+
+        color:white;
+
+        line-height:1.6;
+
+        word-wrap:break-word;
+    }
+
+    .system{
+
+        background: rgba(255,221,87,0.25);
+
+        border-left:4px solid #FFD43B;
+    }
+
+    .time{
+
+        font-size:11px;
+
+        opacity:0.8;
+    }
+
+    @media(max-width:600px){
 
         body{
-
-            height:100vh;
-
-            display:flex;
-
-            justify-content:center;
-
-            align-items:center;
-
-            background: linear-gradient(
-                135deg,
-                #667eea,
-                #764ba2,
-                #6B73FF
-            );
-
-            padding:20px;
+            padding:10px;
         }
 
         .container{
-
-            width:100%;
-
-            max-width:750px;
-
-            background: rgba(255,255,255,0.12);
-
-            backdrop-filter: blur(15px);
-
-            border:1px solid rgba(255,255,255,0.2);
-
-            border-radius:24px;
-
-            padding:24px;
-
-            box-shadow:
-                0 8px 32px rgba(0,0,0,0.2);
+            padding:15px;
         }
 
         h1{
-
-            text-align:center;
-
-            color:white;
-
-            margin-bottom:20px;
-
-            font-size:34px;
+            font-size:24px;
         }
 
-        #online{
+        .top,
+        .bottom{
 
-            color:#d1ffd6;
-
-            text-align:center;
-
-            margin-bottom:20px;
-
-            font-size:14px;
-        }
-
-        .top{
-
-            display:flex;
-
-            gap:10px;
-
-            margin-bottom:20px;
-        }
-
-        .top input{
-
-            flex:1;
-        }
-
-        input{
-
-            padding:14px;
-
-            border:none;
-
-            outline:none;
-
-            border-radius:14px;
-
-            background: rgba(255,255,255,0.18);
-
-            color:white;
-
-            font-size:15px;
-        }
-
-        input::placeholder{
-            color:#eee;
+            flex-direction:column;
         }
 
         button{
 
-            border:none;
-
-            padding:14px 24px;
-
-            border-radius:14px;
-
-            background:white;
-
-            color:#6B73FF;
-
-            font-weight:bold;
-
-            cursor:pointer;
-
-            transition:0.3s;
-        }
-
-        button:hover{
-
-            transform:translateY(-2px);
-
-            opacity:0.92;
+            width:100%;
         }
 
         #chat{
-
-            height:420px;
-
-            overflow-y:auto;
-
-            padding:15px;
-
-            border-radius:18px;
-
-            background: rgba(255,255,255,0.08);
-
-            margin-bottom:20px;
+            height:350px;
         }
+    }
 
-        #chat::-webkit-scrollbar{
-            width:6px;
-        }
+</style>
+```
 
-        #chat::-webkit-scrollbar-thumb{
-
-            background:white;
-
-            border-radius:10px;
-        }
-
-        .message{
-
-            padding:14px;
-
-            margin-bottom:14px;
-
-            border-radius:16px;
-
-            background: rgba(255,255,255,0.16);
-
-            color:white;
-
-            line-height:1.6;
-
-            animation:fadeIn 0.3s ease;
-        }
-
-        .system{
-
-            background: rgba(255,221,87,0.25);
-
-            border-left:4px solid #FFD43B;
-        }
-
-        .time{
-
-            font-size:11px;
-
-            opacity:0.8;
-        }
-
-        .bottom{
-
-            display:flex;
-
-            gap:10px;
-        }
-
-        .bottom input{
-            flex:1;
-        }
-
-        @keyframes fadeIn{
-
-            from{
-                opacity:0;
-                transform:translateY(10px);
-            }
-
-            to{
-                opacity:1;
-                transform:translateY(0);
-            }
-        }
-
-    </style>
 
 </head>
 
